@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { getTodos, createTodo } from './todoService';
+import { getTodos, createTodo, deleteTodo } from './todoService';
 
 export const useTodoStore = create((set) => ({
   todos: [],
@@ -9,8 +9,13 @@ export const useTodoStore = create((set) => ({
     set({ todos: data });
   },
 
-  addTodo: async (title, description) => {
-    const newTodo = await createTodo({ title, description });
+  addTodo: async (text) => {
+    const newTodo = await createTodo({ text });
     set((state) => ({ todos: [...state.todos, newTodo] }));
   },
+
+  removeTodo: async (id) => {
+    await deleteTodo(id);
+    set((state) => ({ todos: state.todos.filter(todo => todo.id !== id) }));
+  }
 }));

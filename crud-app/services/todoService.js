@@ -11,3 +11,10 @@ export const createTodo = async (data) => {
   });
   return res.json();
 };
+
+export const deleteTodo = async (id) => {
+  const res = await fetch(`/api/todo/${id}`, {
+    method: 'DELETE',
+  });
+  return res.json();
+};
