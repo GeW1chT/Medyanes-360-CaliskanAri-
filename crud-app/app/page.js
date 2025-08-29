@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import TestComponent from "./components/TestComponent";
 
 export default function Home() {
     const [todos, setTodos] = useState([]);
@@ -40,6 +41,8 @@ export default function Home() {
                 <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
                     Todo List
                 </h1>
+                
+                <TestComponent />
 
                 <form onSubmit={addTodo} className="mb-6">
                     <div className="flex gap-2">
